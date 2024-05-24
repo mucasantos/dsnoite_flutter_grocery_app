@@ -1,5 +1,20 @@
 import 'dart:convert';
 
+class Products {
+  List<Product>? products;
+  Products({this.products});
+  //Criar um decoder from Json para converter os dados que vêm da API em uma classe
+  Products.fromJson(Map<String, dynamic> json) {
+    if (json["products"] != null) {
+      products = [];
+      json["products"].forEach((produto) => {
+            //Guardar na lista de produtos!
+            products?.add(Product.fromJson(produto))
+          });
+    }
+  }
+}
+
 class Product {
   int id;
   int quantity;
