@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/services/app_constants.dart';
+import 'package:grocery_app/views/detail_product.dart';
 import 'package:grocery_app/views/homepage.dart';
 
 void main() {
@@ -15,7 +17,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: mainColor,
+          primary: mainColor,
+        ),
         useMaterial3: true,
       ),
       home: const HomePage(),
