@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/services/app_constants.dart';
-import 'package:grocery_app/views/detail_product.dart';
 import 'package:grocery_app/views/homepage.dart';
 
 void main() {
