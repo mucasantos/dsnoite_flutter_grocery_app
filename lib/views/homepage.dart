@@ -53,14 +53,29 @@ class _HomePageState extends State<HomePage> {
       ),
       body: allProds == null
           ? hasError
-              ? const Center(
-                  child: Text(
-                    "Ocorreu um erro...",
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          "Ocorreu um erro...",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                          onPressed: () async {
+                            await getProducts();
+                          },
+                          child: const Text("Tentar"))
+                    ],
                   ),
                 )
               : const Center(child: CircularProgressIndicator())

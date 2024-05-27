@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/models/product.dart';
-import 'package:grocery_app/services/app_constants.dart';
 
 class ProductDetail extends StatelessWidget {
   const ProductDetail({
