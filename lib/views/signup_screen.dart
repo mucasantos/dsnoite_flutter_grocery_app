@@ -86,7 +86,10 @@ class _SignupScreenState extends State<SignupScreen> {
           ),
           Column(
             children: [
-              const AppButton(),
+              AppButton(
+                btnTitle: "Cadastrar",
+                onPressed: () {},
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

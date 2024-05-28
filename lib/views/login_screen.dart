@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/views/navigation_screen.dart';
 import 'package:grocery_app/views/signup_screen.dart';
 import 'package:grocery_app/views/widgets/app_button.dart';
 
@@ -77,7 +78,15 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           Column(
             children: [
-              const AppButton(),
+              AppButton(
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => const NavigationScreen(),
+                    ),
+                  );
+                },
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

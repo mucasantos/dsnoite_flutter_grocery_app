@@ -4,8 +4,11 @@ import 'package:grocery_app/services/app_constants.dart';
 class AppButton extends StatelessWidget {
   const AppButton({
     super.key,
+    this.btnTitle = "Entrar",
+    required this.onPressed,
   });
-
+  final String btnTitle;
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,10 +26,10 @@ class AppButton extends StatelessWidget {
                         borderRadius: BorderRadius.all(
                       Radius.circular(20),
                     ))),
-                onPressed: () {},
-                child: const Text(
-                  "Entrar",
-                  style: TextStyle(
+                onPressed: onPressed,
+                child: Text(
+                  btnTitle,
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
