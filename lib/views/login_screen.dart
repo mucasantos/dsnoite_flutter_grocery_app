@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/views/signup_screen.dart';
+import 'package:grocery_app/views/widgets/app_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -75,24 +77,20 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: SizedBox(
-                      height: 60,
-                      child: ElevatedButton(
-                          onPressed: () {}, child: const Text("Entrar")),
-                    )),
-                  ],
-                ),
-              ),
+              const AppButton(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text("Não tem uma conta?"),
-                  TextButton(onPressed: () {}, child: const Text("Cadastro"))
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => const SignupScreen(),
+                          ),
+                        );
+                      },
+                      child: const Text("Cadastro"))
                 ],
               )
             ],
