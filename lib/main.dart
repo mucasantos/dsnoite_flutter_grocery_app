@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/services/app_constants.dart';
 import 'package:grocery_app/views/detail_product.dart';
 import 'package:grocery_app/views/homepage.dart';
+import 'package:grocery_app/views/navigation_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +24,9 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const NavigationPage(
+        
+      ),
     );
   }
 }
