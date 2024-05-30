@@ -11,10 +11,9 @@ class ProductDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("OK"),
-      ),
+      appBar: AppBar(),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image.network(
             product.image,
@@ -47,7 +46,19 @@ class ProductDetail extends StatelessWidget {
                 )
             ],
           ),
-          ElevatedButton(onPressed: () {}, child: const Text("Comprar"))
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("Adicionar ao carrinho"),
+                  ),
+                ),
+              ],
+            ),
+          )
           //Row -> button e text
           //Texto
           //Texto

@@ -44,13 +44,13 @@ class Product {
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
         id: json["id"],
-        quantity: json["quantity"],
+        quantity: json["quantity"] ?? 0,
         name: json["name"],
         image: json["image"],
         description: json["description"],
         price: json["price"]?.toDouble(),
-        review: json["review"],
-        categoryId: json["categoryId"],
+        review: json["review"] ?? 0,
+        categoryId: json["categoryId"] ?? 0,
         userId: json["userId"],
       );
 
