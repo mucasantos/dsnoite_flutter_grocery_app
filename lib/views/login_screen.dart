@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:grocery_app/services/http_manager.dart';
@@ -101,6 +101,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 try {
                   var userLoginData = await HTTPManager()
                       .userLogin(emailController.text, passController.text);
+
+                  log(userLoginData.toString());
+                  if (!context.mounted) {
+                    return;
+                  }
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
                       builder: (context) => const NavigationScreen(),
@@ -110,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   setState(() {
                     loginError = true;
                   });
-                  print(e);
+                  print(e.toString());
                 }
               }),
               Row(

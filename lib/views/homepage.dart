@@ -18,7 +18,6 @@ bool hasError = false;
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    // TODO: Chamar a API e adicionar os dados na lista de produtos!
     getProducts();
     super.initState();
   }

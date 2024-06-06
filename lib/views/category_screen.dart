@@ -15,7 +15,6 @@ Categories? allCats;
 class _CategoryScreenState extends State<CategoryScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     getCategories();
     super.initState();
   }

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 
 //const String server = "http://192.168.15.5:3001/";
@@ -21,6 +19,9 @@ class HTTPManager {
   }
 
   userLogin(String email, String password) async {
+    print(email);
+    print(password);
+
     Response response;
     response = await dio.post('${server}login', data: {
       'email': email,

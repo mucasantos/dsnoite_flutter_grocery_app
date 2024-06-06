@@ -1,5 +1,6 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:grocery_app/services/app_constants.dart';
 import 'package:grocery_app/services/http_manager.dart';
 import 'package:grocery_app/views/login_screen.dart';
 import 'package:grocery_app/views/widgets/app_button.dart';
@@ -129,30 +130,45 @@ class _SignupScreenState extends State<SignupScreen> {
                   )
                 ],
               ),
+              if (signupError)
+                const Center(
+                  child: Text(
+                    "Erro de validação!",
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               Column(
                 children: [
                   AppButton(
                     btnTitle: "Cadastrar",
                     onPressed: () async {
-                      try {
-                        var userSignupData = await HTTPManager().userSignup(
-                          email: emailController.text,
-                          password: passController.text,
-                          name: nameController.text,
-                          state: stateController.text,
-                          city: cityController.text,
-                          phone: phoneController.text,
-                        );
-                        print("On View");
+                      var userSignupData = await HTTPManager().userSignup(
+                        email: emailController.text,
+                        password: passController.text,
+                        name: nameController.text,
+                        state: stateController.text,
+                        city: cityController.text,
+                        phone: phoneController.text,
+                      );
 
-                        print(userSignupData['data']);
-                      } catch (e) {
+                      if (userSignupData['error'] != null) {
                         setState(() {
                           signupError = true;
                         });
-                        print("Error LOG TRY==>");
-                        print(e);
-                        print("Error LOG TRY==>");
+                        log(userSignupData['error']);
+                        log(userSignupData['data']);
+                      } else {
+                        if (!context.mounted) {
+                          return;
+                        }
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => const LoginScreen(),
+                          ),
+                        );
                       }
                     },
                   ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/services/app_constants.dart';
+import 'package:grocery_app/views/cart_screen.dart';
 import 'package:grocery_app/views/category_screen.dart';
 import 'package:grocery_app/views/homepage.dart';
 
@@ -19,9 +20,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
     fragments = [
       const HomePage(),
       const CategoryScreen(),
-      Container(
-        color: Colors.blueGrey,
-      ),
+      const CartScreen(),
       Container(),
       Container()
     ];
