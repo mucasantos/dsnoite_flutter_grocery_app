@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
-//const String server = "http://192.168.15.5:3001/";
-const String server = "http://10.92.198.38:3001/";
+const String server = "http://192.168.15.8:3001/";
+//const String server = "http://10.92.198.4:3001/";
 
 class HTTPManager {
   final dio = Dio();
@@ -19,16 +19,20 @@ class HTTPManager {
   }
 
   userLogin(String email, String password) async {
-    print(email);
-    print(password);
-
     Response response;
-    response = await dio.post('${server}login', data: {
-      'email': email,
-      'password': password,
-    });
 
-    return response.data;
+    try {
+      response = await dio.post('${server}login', data: {
+        'email': email,
+        'password': password,
+      });
+
+      return response.data;
+    } catch (e) {
+      if (e is DioException) {
+        return e.response?.data;
+      }
+    }
   }
 
   userSignup({

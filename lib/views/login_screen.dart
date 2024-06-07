@@ -18,6 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passController = TextEditingController();
 
   bool loginError = false;
+  String textError = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,10 +87,10 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
           ),
           if (loginError)
-            const Center(
+            Center(
               child: Text(
-                "Usuário ou senha inválidos!",
-                style: TextStyle(
+                textError,
+                style: const TextStyle(
                   color: Colors.red,
                   fontWeight: FontWeight.bold,
                 ),
@@ -98,11 +99,16 @@ class _LoginScreenState extends State<LoginScreen> {
           Column(
             children: [
               AppButton(onPressed: () async {
-                try {
-                  var userLoginData = await HTTPManager()
-                      .userLogin(emailController.text, passController.text);
+                var userLoginData = await HTTPManager()
+                    .userLogin(emailController.text, passController.text);
 
-                  log(userLoginData.toString());
+                if (userLoginData['error'] != null) {
+                  setState(() {
+                    loginError = true;
+                    textError = userLoginData['error'];
+                  });
+                  log(userLoginData['error']);
+                } else {
                   if (!context.mounted) {
                     return;
                   }
@@ -111,11 +117,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       builder: (context) => const NavigationScreen(),
                     ),
                   );
-                } catch (e) {
                   setState(() {
                     loginError = true;
                   });
-                  print(e.toString());
                 }
               }),
               Row(
