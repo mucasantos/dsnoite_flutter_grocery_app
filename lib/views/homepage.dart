@@ -102,11 +102,7 @@ class _HomePageState extends State<HomePage> {
                   },
                   child: Container(
                     margin: const EdgeInsets.all(6.0),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color.fromARGB(255, 206, 203, 203),
-                        ),
-                        borderRadius: BorderRadius.circular(15)),
+                    decoration: decorationBorder,
                     child: Column(
                       children: [
                         const SizedBox(
@@ -145,9 +141,7 @@ class _HomePageState extends State<HomePage> {
                                 width: 30,
                                 height: 30,
                                 //  margin: const EdgeInsets.all(16),
-                                decoration: BoxDecoration(
-                                    color: mainColor,
-                                    borderRadius: BorderRadius.circular(10)),
+                                decoration: boxDecorationButton,
                                 child: IconButton(
                                   iconSize: 20,
                                   padding: EdgeInsets.zero,
