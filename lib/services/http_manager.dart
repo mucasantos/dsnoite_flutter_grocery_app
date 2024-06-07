@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
-const String server = "http://192.168.15.8:3001/";
-//const String server = "http://10.92.198.4:3001/";
+//const String server = "http://192.168.15.8:3001/";
+const String server = "http://10.92.195.21:3001/";
 
 class HTTPManager {
   final dio = Dio();
